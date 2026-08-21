@@ -18,9 +18,9 @@ window.SITE = [
   {
     "id": "vod",
     "case": "campagne",
-    "titre": "Série d'annonces vidéo à la demande",
+    "titre": "Lancement CanalPlay / Propositions",
     "secteur": "Plateforme de streaming",
-    "ligne": "Faire reconnaître un genre de film avec presque rien. Un objet, une accroche et beaucoup de blanc : une campagne pensée pour être comprise avant même d'être lue.",
+    "ligne": "Une campagne pensée pour être comprise avant même d'être lue.",
     "statut": "Proposition",
     "imgs": [
       {
