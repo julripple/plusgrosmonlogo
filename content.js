@@ -58,9 +58,9 @@ window.SITE = [
   {
     "id": "pap",
     "case": "campagne",
-    "titre": "Campagne de dix annonces presse",
+    "titre": "Campagne de marque",
     "secteur": "Prêt-à-porter français",
-    "ligne": "Dix annonces, dix situations, mais une seule campagne. L'enjeu était de construire un principe suffisamment identifiable pour durer sans donner l'impression de répéter dix fois la même chose.",
+    "ligne": "Des annonces, des situations, mais une seule campagne. L'enjeu était de présenter la vision et les valeurs de la marque de manière ludique et humouristique.",
     "imgs": [
       {
         "src": "pap-01",
