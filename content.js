@@ -112,7 +112,7 @@ window.SITE = [
   {
     "id": "primeur",
     "case": "campagne",
-    "titre": "Campagne produit — jeux de mots",
+    "titre": "Campagne produit — Idiotisme",
     "secteur": "Réseau de gastronomes indépendants",
     "ligne": "Des expressions que tout le monde connaît, détournées avec le produit. Une idée volontairement simple, parce que les bonnes mécaniques n'ont pas toujours besoin d'en faire beaucoup.",
     "imgs": [
@@ -212,7 +212,7 @@ window.SITE = [
     "case": "identite",
     "titre": "Identité et annonce presse — montagne",
     "secteur": "Détaillant de sport de montagne",
-    "ligne": "Le point de départ : un soleil qui vient se poser sur une ligne de crête. Le signe est ensuite devenu naturellement le principe graphique de la première campagne.",
+    "ligne": "Logo & Campagne presse pour ce détaillant incontournable de la montagne",
     "imgs": [
       {
         "src": "montagne-01",
@@ -224,7 +224,7 @@ window.SITE = [
   {
     "id": "construction",
     "case": "campagne",
-    "titre": "Série d'annonces corporate",
+    "titre": "Annonce Presse",
     "secteur": "Menuiserie, charpente, construction",
     "ligne": "Plusieurs métiers et autant d'images possibles, mais une seule entreprise derrière. La diagonale devient le fil rouge de la campagne et laisse chaque annonce vivre sans perdre la signature.",
     "imgs": [
@@ -253,9 +253,9 @@ window.SITE = [
   {
     "id": "emprunteur",
     "case": "campagne",
-    "titre": "Campagne acquisition",
+    "titre": "Campagne métro parisien",
     "secteur": "Assurtech emprunteur",
-    "ligne": "Pour parler économies, j'ai préféré montrer la réaction plutôt que le calcul. Un message frontal, deux visages et le bénéfice compris en quelques secondes.",
+    "ligne": "Non mais ta tête quand ... un effet plutot qu'un grand discour",
     "imgs": [
       {
         "src": "emprunteur-01",
@@ -321,7 +321,7 @@ window.SITE = [
     "case": "identite",
     "titre": "Identité d'un service de rééducation à distance",
     "secteur": "Rééducation en ligne",
-    "ligne": "Parler de mouvement sans tomber dans l'imagerie médicale habituelle. Le corps est ramené à quelques formes simples et vient directement prendre place dans le signe.",
+    "ligne": "Parler de mouvement sans tomber dans l'imagerie médicale habituelle et contextualiser l'esprit sport qui anime le créateur",
     "imgs": [
       {
         "src": "reeduc-01",
@@ -340,7 +340,7 @@ window.SITE = [
     "case": "identite",
     "titre": "Le Petit Chalet des Dents",
     "secteur": "Santé de proximité, montagne",
-    "ligne": "Avec un nom pareil, inutile de chercher midi à quatorze heures. Une dent, un chalet et un seul trait pour réunir les deux.",
+    "ligne": "Une dent, un chalet et un seul trait pour réunir les deux.",
     "imgs": [
       {
         "src": "chalet-01",
@@ -434,9 +434,9 @@ window.SITE = [
   {
     "id": "biscuiterie",
     "case": "ia",
-    "titre": "Illustration et packaging — biscuiterie",
+    "titre": "Illustration et packaging — Logo Tweedle",
     "secteur": "Biscuiterie de montagne",
-    "ligne": "Construire toute une famille de personnages sans partir sur cinq productions différentes. Les animaux sont générés, puis sélectionnés, harmonisés et intégrés dans un système de packaging commun.",
+    "ligne": "Des animaux des montagnes pour servir le local",
     "imgs": [
       {
         "src": "biscuiterie-01",
