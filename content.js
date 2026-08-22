@@ -255,7 +255,7 @@ window.SITE = [
     "case": "campagne",
     "titre": "Campagne métro parisien",
     "secteur": "Assurtech emprunteur",
-    "ligne": "Non mais ta tête quand ... un effet plutot qu'un grand discour",
+    "ligne": "Non mais ta tête quand ... un effet plutot qu'un grand discours",
     "imgs": [
       {
         "src": "emprunteur-01",
