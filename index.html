@@ -302,8 +302,10 @@ footer{border-top:1px solid var(--line);margin-top:clamp(50px,10vh,120px);
    se retire au bout de 4 s : le site reste consultable. */
 setTimeout(function(){
   var i = document.querySelector('.intro');
-  if(i && i.style.display !== 'none'){ i.style.display = 'none'; }
-}, 4000);
+  if(i && i.style.display !== 'none' && document.visibilityState === 'visible'){
+    i.style.display = 'none';
+  }
+}, 8000);
 </script>
 <div class="intro" aria-hidden="true"><div class="plus"><i></i><i></i></div></div>
 
@@ -407,6 +409,7 @@ setTimeout(function(){
 <script>
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 gsap.registerPlugin(ScrollTrigger);
+gsap.ticker.lagSmoothing(500, 33);   /* évite le saut brutal au retour d'un onglet */
 
 /* garde-fou : renvoie les cibles seulement s'il y en a, sinon null.
    Évite les avertissements « GSAP target not found » quand une liste est vide
@@ -787,7 +790,7 @@ if(REDUCED){
   fixed.style.fontVariationSettings='"wght" 200, "wdth" 75';
   setSlot({wght:200, wdth:75});
 
-  const tl = gsap.timeline({delay:.15});
+  const tl = gsap.timeline({delay:.15, paused:true});
   tl.fromTo('.intro .plus',{scale:.2,rotate:-90},{scale:1,rotate:0,duration:.5,ease:'power4.inOut'})
     .to('.intro .plus',{scale:28,duration:.42,ease:'power3.in'},'+=.05')
     .set('.intro',{display:'none'})
@@ -797,7 +800,38 @@ if(REDUCED){
     .from('.lede',{opacity:0,y:20,duration:.55,ease:'power3.out'},'-=.45');
 
   rotate(tl);
+  window.__heroTl = tl;
+
+  /* Le navigateur gèle les animations d'un onglet en arrière-plan.
+     On ne lance donc la séquence que lorsque la page est réellement visible. */
+  if(document.visibilityState === 'visible'){
+    tl.play();
+  }else{
+    document.addEventListener('visibilitychange', function once(){
+      if(document.visibilityState === 'visible'){
+        document.removeEventListener('visibilitychange', once);
+        tl.play();
+      }
+    });
+  }
 }
+
+/* Filet de sécurité : quoi qu'il arrive, le hero est lisible au bout de 6 s.
+   Le contenu ne dépend jamais du bon déroulement d'une animation. */
+setTimeout(function(){
+  const tl = window.__heroTl;
+  if(tl && tl.progress() > .9) return;
+  if(tl) tl.kill();
+  const last = SEQ[SEQ.length-1];
+  gsap.set(fixed, {yPercent:0, clearProps:'transform'});
+  fixed.style.fontVariationSettings = '"wght" 800, "wdth" 100';
+  slot.textContent = last.t;
+  gsap.set(slot, {yPercent:0, clearProps:'transform'});
+  setSlot(last);
+  gsap.set(['.hero .eyebrow', '.lede'], {opacity:1, y:0, clearProps:'all'});
+  const i = document.querySelector('.intro');
+  if(i) i.style.display = 'none';
+}, 6000);
 
 if(document.fonts && document.fonts.ready){
   document.fonts.ready.then(()=>{ masonry(grid); ScrollTrigger.refresh(); });
