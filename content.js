@@ -255,7 +255,7 @@ window.SITE = [
     "case": "campagne",
     "titre": "Campagne métro parisien",
     "secteur": "Assurtech emprunteur",
-    "ligne": "Non mais ta tête quand ... un effet plutot qu'un grand discours",
+    "ligne": "Non mais ta tête quand ... un effet plutot qu'un grand discour",
     "imgs": [
       {
         "src": "emprunteur-01",
@@ -486,6 +486,35 @@ window.SITE = [
         "src": "moka-03",
         "w": 1354,
         "h": 1354
+      }
+    ]
+  },
+  {
+    "id": "ripple",
+    "case": "digital",
+    "titre": "Ripple — plateforme de sport solidaire",
+    "secteur": "Projet personnel",
+    "ligne": "Un km parcouru finance un projet. J'ai porté la marque, le produit et l'interface, du concept jusqu'à la plateforme en ligne.",
+    "statut": "Projet personnel",
+    "imgs": [
+      {
+        "src": "ripple-01",
+        "w": 1747,
+        "h": 923
+      }
+    ]
+  },
+  {
+    "id": "chaletsite",
+    "case": "digital",
+    "titre": "Site — Le Petit Chalet des Dents",
+    "secteur": "Cabinet dentaire pédiatrique",
+    "ligne": "Le prolongement direct de l'identité : le trait unique du logo devient une famille de pictogrammes, et la navigation d'un cabinet pour enfants.",
+    "imgs": [
+      {
+        "src": "chaletsite-01",
+        "w": 1745,
+        "h": 928
       }
     ]
   }
