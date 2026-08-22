@@ -161,7 +161,7 @@ header .k{color:var(--accent);font-variation-settings:"wght" 800}
   display:block;text-align:left;will-change:transform}
 .card img{width:100%;height:auto;display:block;transition:transform .55s var(--ease)}
 .card:hover img,.card:focus-visible img{transform:scale(1.07)}
-.card .meta{position:absolute;inset:auto 0 0 0;padding:16px;z-index:2;
+.card .meta{position:absolute;inset:auto 0 0 0;padding:16px 52px 16px 16px;z-index:2;
   background:linear-gradient(to top,rgba(10,10,10,.92),rgba(10,10,10,0));
   transform:translateY(6px);opacity:0;transition:all .35s var(--ease)}
 .card:hover .meta,.card:focus-visible .meta{transform:translateY(0);opacity:1}
@@ -170,6 +170,29 @@ header .k{color:var(--accent);font-variation-settings:"wght" 800}
   color:var(--accent);font-variation-settings:"wght" 600;margin-bottom:7px}
 .card .n{position:absolute;top:12px;right:14px;z-index:2;font-size:10px;letter-spacing:.08em;
   color:rgba(242,242,238,.55);font-variation-settings:"wght" 600}
+
+/* le + : signe permanent que la vignette s'ouvre */
+.card .more{position:absolute;right:12px;bottom:12px;z-index:3;width:26px;height:26px;
+  display:block;transition:transform .35s var(--ease);pointer-events:none}
+.card .more i{position:absolute;background:var(--ink);transition:background .35s var(--ease)}
+.card .more i:first-child{left:50%;top:0;width:2px;height:100%;transform:translateX(-50%)}
+.card .more i:last-child{top:50%;left:0;height:2px;width:100%;transform:translateY(-50%)}
+.card .more::before{content:"";position:absolute;inset:-9px;background:rgba(10,10,10,.55);
+  backdrop-filter:blur(6px);z-index:-1;transition:background .35s var(--ease)}
+.card:hover .more,.card:focus-visible .more,.card.hint .more{transform:scale(1.45) rotate(90deg)}
+.card:hover .more::before,.card:focus-visible .more::before,.card.hint .more::before{background:var(--accent)}
+
+/* pas de survol possible : on montre tout en permanence */
+@media (hover:none){
+  .card .meta{transform:none;opacity:1}
+  .card .more{transform:scale(1.15)}
+  .card .more::before{background:var(--accent)}
+}
+
+/* consigne sous la barre de filtres */
+.hint-line{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--mut);
+  font-variation-settings:"wght" 600;margin-bottom:18px;display:flex;align-items:center;gap:9px}
+.hint-line b{color:var(--accent);font-variation-settings:"wght" 800;font-size:14px;line-height:1}
 .tag{display:inline-block;font-size:9px;letter-spacing:.12em;text-transform:uppercase;
   font-variation-settings:"wght" 600;border:1px solid var(--line);color:var(--mut);
   padding:4px 8px;line-height:1;vertical-align:middle}
@@ -310,6 +333,7 @@ footer{border-top:1px solid var(--line);margin-top:clamp(50px,10vh,120px);
       <h2 class="eyebrow">Sélection</h2>
       <div class="filters" id="filters"></div>
     </div>
+    <div class="hint-line"><b>+</b><span id="hintTxt">Cliquez sur un projet pour voir la série</span></div>
     <div class="grid" id="grid"></div>
   </section>
 
@@ -375,6 +399,18 @@ footer{border-top:1px solid var(--line);margin-top:clamp(50px,10vh,120px);
 <script>
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 gsap.registerPlugin(ScrollTrigger);
+
+/* garde-fou : renvoie les cibles seulement s'il y en a, sinon null.
+   Évite les avertissements « GSAP target not found » quand une liste est vide
+   (grille en cours de remplacement, filtre sans projet, etc.). */
+function T(x){
+  if(!x) return null;
+  const a = gsap.utils.toArray(x);
+  return a.length ? a : null;
+}
+const gFrom   = (x,v)=>{ const a=T(x); return a ? gsap.from(a,v)   : gsap.timeline(); };
+const gTo     = (x,v)=>{ const a=T(x); return a ? gsap.to(a,v)     : gsap.timeline(); };
+const gFromTo = (x,f,v)=>{ const a=T(x); return a ? gsap.fromTo(a,f,v) : gsap.timeline(); };
 
 const LABELS = {campagne:'Campagne', identite:'Identité', ia:'IA', edition:'Édition'};
 const IMG = window.IMG || {};
@@ -455,9 +491,9 @@ if(matchMedia('(pointer:fine)').matches){
   if(!L.length){ box.closest('.clients').remove(); return; }
   box.innerHTML = L.map(l=>`<span><img src="${l.src}" alt="" loading="lazy"></span>`).join('');
   if(!REDUCED){
-    gsap.from('.logos span',{opacity:0,y:16,duration:.5,ease:'expo.out',
+    gFrom('.logos span',{opacity:0,y:16,duration:.5,ease:'expo.out',
       stagger:{amount:.45},scrollTrigger:{trigger:'.clients',start:'top 86%'}});
-    gsap.fromTo('.logos',{yPercent:8},{yPercent:-8,ease:'none',
+    gFromTo('.logos',{yPercent:8},{yPercent:-8,ease:'none',
       scrollTrigger:{trigger:'.clients',start:'top bottom',end:'bottom top',scrub:.8}});
   }
 })();
@@ -503,13 +539,34 @@ function renderGrid(){
       <img src="${p.imgs[0].src}" alt="${p.titre} — ${p.secteur}. Direction artistique Julien Saldo." loading="lazy" decoding="async">
       <span class="n">${String(i+1).padStart(2,'0')}</span>
       ${p.statut ? `<span class="tag">${p.statut}</span>` : ''}
+      <span class="more" aria-hidden="true"><i></i><i></i></span>
       <span class="meta"><span class="s">${LABELS[p.case]||p.case} — ${p.imgs.length} visuel${p.imgs.length>1?'s':''}</span><span class="t">${p.titre}</span></span>
     </button>`).join('');
   masonry(grid);
-  if(!REDUCED){
-    gsap.from('.card',{opacity:0,y:20,duration:.5,ease:'expo.out',stagger:{amount:.28},
-      onComplete:parallax});
+  const ht = document.getElementById('hintTxt');
+  if(ht){
+    const n = (current==='tout' ? DATA : DATA.filter(p=>p.case===current)).length;
+    ht.textContent = `${n} projet${n>1?'s':''} — cliquez pour voir la série`;
   }
+  if(!REDUCED){
+    gFrom('.card',{opacity:0,y:20,duration:.5,ease:'expo.out',stagger:{amount:.28},
+      onComplete(){ parallax(); demo(); }});
+  }
+}
+
+/* une seule fois : la première vignette joue son état ouvert pour montrer le geste */
+let hintDone = false;
+function demo(){
+  if(hintDone || REDUCED) return;
+  const first = grid.querySelector('.card');
+  if(!first) return;
+  hintDone = true;
+  ScrollTrigger.create({trigger:grid, start:'top 72%', once:true, onEnter(){
+    setTimeout(()=>{
+      first.classList.add('hint');
+      setTimeout(()=>first.classList.remove('hint'), 1100);
+    }, 450);
+  }});
 }
 
 /* les colonnes ne descendent pas à la même vitesse : de la profondeur sans recadrer */
@@ -560,9 +617,9 @@ function open(id, card){
   ov.scrollTop = 0;
 
   gsap.set(ov,{visibility:'visible',autoAlpha:1});
-  gsap.from(ov.querySelectorAll('.head > *'),
+  gFrom(ov.querySelectorAll('.head > *'),
     {opacity:0,y:20,duration:.5,ease:'expo.out',stagger:.05,delay:.05});
-  gsap.from(ov.querySelectorAll('.shots > *'),
+  gFrom(ov.querySelectorAll('.shots > *'),
     {opacity:0,y:26,duration:.55,ease:'expo.out',stagger:{amount:.3},delay:.1});
 
   ov.setAttribute('aria-hidden','false');
@@ -752,7 +809,7 @@ if(document.fonts && document.fonts.ready){
   walk(lede);
   const wds = lede.querySelectorAll('.wd');
   if(!wds.length) return;
-  gsap.fromTo(wds, {opacity:.28},
+  gFromTo(wds, {opacity:.28},
     {opacity:1, ease:'none', stagger:{amount:1},
      scrollTrigger:{trigger:lede, start:'top 82%', end:'bottom 55%', scrub:.5}});
 })();
@@ -792,6 +849,7 @@ document.querySelectorAll('[data-plus]').forEach(el=>{
 /* ---------- révélations ---------- */
 gsap.utils.toArray('.sk').forEach(el=>{
   const h = el.querySelector('h3'), p = el.querySelector('p');
+  if(!h || !p) return;
   gsap.fromTo(h, {yPercent:22}, {yPercent:-10, ease:'none',
     scrollTrigger:{trigger:el, start:'top bottom', end:'bottom top', scrub:.8}});
   gsap.fromTo(p, {yPercent:34}, {yPercent:-16, ease:'none',
@@ -799,7 +857,7 @@ gsap.utils.toArray('.sk').forEach(el=>{
   gsap.fromTo(el, {opacity:0}, {opacity:1, ease:'none',
     scrollTrigger:{trigger:el, start:'top 96%', end:'top 74%', scrub:.4}});
 });
-gsap.from('.joke',{opacity:0,y:24,duration:.6,ease:'expo.out',
+gFrom('.joke',{opacity:0,y:24,duration:.6,ease:'expo.out',
   scrollTrigger:{trigger:'.joke',start:'top 88%'}});
 </script>
 </body>
