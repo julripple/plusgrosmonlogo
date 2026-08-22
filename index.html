@@ -224,6 +224,18 @@ header .k{color:var(--accent);font-variation-settings:"wght" 800}
 .ov .sec{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
   color:var(--accent);font-variation-settings:"wght" 600;margin-bottom:14px}
 .ov p{margin-top:18px;color:var(--mut);line-height:1.55;font-size:clamp(14px,1.5vw,18px)}
+
+/* lien vers le site en ligne */
+.visit{display:inline-flex;align-items:center;gap:11px;margin-top:26px;padding:14px 20px;
+  border:1px solid var(--line);text-transform:uppercase;letter-spacing:.11em;font-size:11px;
+  font-variation-settings:"wght" 700;color:var(--ink);
+  transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease)}
+.visit:hover,.visit:focus-visible{background:var(--accent);border-color:var(--accent);color:#fff}
+.visit .ar{display:inline-block;transition:transform .3s var(--ease)}
+.visit:hover .ar{transform:translate(3px,-3px)}
+.visit .host{color:var(--mut);text-transform:none;letter-spacing:0;font-variation-settings:"wght" 400;
+  transition:color .3s var(--ease)}
+.visit:hover .host{color:rgba(255,255,255,.75)}
 .ov .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
   gap:clamp(10px,1.4vw,18px);grid-auto-rows:4px;align-items:start;
   padding-bottom:clamp(40px,8vh,90px)}
@@ -628,6 +640,21 @@ function open(id, card){
     (p.statut ? ` <span class="tag">${p.statut}</span>` : '');
   ov.querySelector('h2').textContent = p.titre;
   ov.querySelector('.head p').textContent = p.ligne;
+
+  /* bouton « voir le site », affiché seulement si le projet a une adresse */
+  const head = ov.querySelector('.head');
+  const old = head.querySelector('.visit');
+  if(old) old.remove();
+  if(p.url){
+    const host = p.url.replace(/^https?:\/\//,'').replace(/\/$/,'');
+    const a = document.createElement('a');
+    a.className = 'visit';
+    a.href = p.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.innerHTML = `Voir le site en ligne <span class="host">${host}</span> <span class="ar">↗</span>`;
+    head.appendChild(a);
+  }
   ov.querySelector('.shots').innerHTML = p.imgs.map((im,i)=>
     `<button data-i="${i}" data-w="${im.w}" data-h="${im.h}" aria-label="Agrandir le visuel ${i+1}"><img src="${im.src}" alt="${p.titre} — ${p.secteur}, visuel ${i+1} sur ${p.imgs.length}. Direction artistique Julien Saldo." loading="lazy" decoding="async"></button>`).join('');
   currentProject = p;

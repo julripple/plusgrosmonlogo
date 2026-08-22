@@ -7,6 +7,7 @@
    RÉORDONNER          déplacer le bloc { ... } dans la liste
    NON PRODUIT         ajouter   "statut": "Proposition",
    SUPPRIMER           effacer le bloc entier
+   LIEN VERS LE SITE   ajouter   "url": "https://exemple.com",
 
    Les valeurs de "src" sont des clés qui pointent vers images.js.
    Ne les modifiez pas : pour ajouter des images, demandez un nouvel images.js.
@@ -502,7 +503,8 @@ window.SITE = [
         "w": 1747,
         "h": 923
       }
-    ]
+    ],
+    "url": "https://www.movebyripple.com"
   },
   {
     "id": "chaletsite",
@@ -516,7 +518,8 @@ window.SITE = [
         "w": 1745,
         "h": 928
       }
-    ]
+    ],
+    "url": "https://www.lepetitchaletdesdents.fr"
   }
 ];
 
