@@ -297,6 +297,14 @@ footer{border-top:1px solid var(--line);margin-top:clamp(50px,10vh,120px);
 <div class="grain" aria-hidden="true"></div>
 <div class="cur" aria-hidden="true"><i></i><i></i></div>
 <div class="curtain" aria-hidden="true"><span class="cplus"><i></i><i></i></span><span class="clab"></span></div>
+<script>
+/* Si le script principal échoue pour une raison quelconque, l'écran d'entrée
+   se retire au bout de 4 s : le site reste consultable. */
+setTimeout(function(){
+  var i = document.querySelector('.intro');
+  if(i && i.style.display !== 'none'){ i.style.display = 'none'; }
+}, 4000);
+</script>
 <div class="intro" aria-hidden="true"><div class="plus"><i></i><i></i></div></div>
 
 <header>
@@ -393,7 +401,7 @@ footer{border-top:1px solid var(--line);margin-top:clamp(50px,10vh,120px);
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js" onerror="window.__noLenis=1"></script>
 <script src="images.js"></script>
 <script src="content.js"></script>
 <script>
@@ -418,11 +426,18 @@ const px = k => IMG[k] || k;          /* clé → visuel encodé */
 const DATA = (window.SITE || []).map(p => ({...p, imgs: p.imgs.map(i => ({...i, src: px(i.src)}))}));
 
 /* ---------- scroll fluide ---------- */
-if(!REDUCED){
-  const lenis = new Lenis({duration:.85, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add(t=>lenis.raf(t*1000));
-  gsap.ticker.lagSmoothing(0);
+/* Scroll fluide : agrément, jamais une dépendance bloquante.
+   Si la bibliothèque est indisponible ou défaillante, le scroll natif prend le relais
+   et le reste du site fonctionne normalement. */
+if(!REDUCED && !window.__noLenis && typeof Lenis === 'function'){
+  try{
+    const lenis = new Lenis({duration:.85, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t=>lenis.raf(t*1000));
+    gsap.ticker.lagSmoothing(0);
+  }catch(e){
+    console.warn('Scroll fluide indisponible, scroll natif utilisé.', e);
+  }
 }
 
 /* ---------- curseur + ---------- */
