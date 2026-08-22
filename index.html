@@ -227,20 +227,25 @@ header .k{color:var(--accent);font-variation-settings:"wght" 800}
 
 /* lien vers le site en ligne */
 .visit{display:inline-flex;align-items:center;gap:11px;margin-top:26px;padding:14px 20px;
-  border:1px solid var(--line);text-transform:uppercase;letter-spacing:.11em;font-size:11px;
-  font-variation-settings:"wght" 700;color:var(--ink);
+  background:var(--accent);border:1px solid var(--accent);color:#fff;
+  text-transform:uppercase;letter-spacing:.11em;font-size:11px;
+  font-variation-settings:"wght" 700;
   transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease)}
-.visit:hover,.visit:focus-visible{background:var(--accent);border-color:var(--accent);color:#fff}
+.visit:hover,.visit:focus-visible{background:var(--ink);border-color:var(--ink);color:#0A0A0A}
 .visit .ar{display:inline-block;transition:transform .3s var(--ease)}
 .visit:hover .ar{transform:translate(3px,-3px)}
-.visit .host{color:var(--mut);text-transform:none;letter-spacing:0;font-variation-settings:"wght" 400;
-  transition:color .3s var(--ease)}
-.visit:hover .host{color:rgba(255,255,255,.75)}
-.ov .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+.visit .host{color:rgba(255,255,255,.72);text-transform:none;letter-spacing:0;
+  font-variation-settings:"wght" 400;transition:color .3s var(--ease)}
+.visit:hover .host{color:rgba(10,10,10,.6)}
+.ov .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
   gap:clamp(10px,1.4vw,18px);grid-auto-rows:4px;align-items:start;
   padding-bottom:clamp(40px,8vh,90px)}
 .ov .shots img{width:100%;height:auto;display:block;background:var(--surface)}
 .ov .shots button{display:block;width:100%;padding:0;overflow:hidden;background:var(--surface)}
+.ov .shots button.wide{grid-column:1 / -1}          /* panoramique : pleine largeur */
+@media(min-width:900px){
+  .ov .shots button.half{grid-column:span 2}        /* paysage : deux colonnes */
+}
 .ov .shots button img{transition:transform .5s var(--ease)}
 .ov .shots button:hover img{transform:scale(1.05)}
 
@@ -543,8 +548,10 @@ function renderFilters(){
 
 const ROW = 4;
 function masonry(container){
-  const gap = parseFloat(getComputedStyle(container).rowGap) || 0;
+  const cs = getComputedStyle(container);
+  const gap = parseFloat(cs.rowGap) || 0;
   container.querySelectorAll('[data-w][data-h]').forEach(el=>{
+    /* getBoundingClientRect donne déjà la largeur réelle, colonnes fusionnées comprises */
     const w = el.getBoundingClientRect().width;
     if(!w) return;
     const h = w * (+el.dataset.h / +el.dataset.w);
@@ -656,9 +663,10 @@ function open(id, card){
     head.appendChild(a);
   }
   ov.querySelector('.shots').innerHTML = p.imgs.map((im,i)=>
-    `<button data-i="${i}" data-w="${im.w}" data-h="${im.h}" aria-label="Agrandir le visuel ${i+1}"><img src="${im.src}" alt="${p.titre} — ${p.secteur}, visuel ${i+1} sur ${p.imgs.length}. Direction artistique Julien Saldo." loading="lazy" decoding="async"></button>`).join('');
+    `<button data-i="${i}" data-w="${im.w}" data-h="${im.h}" class="${(im.w/im.h) >= 1.7 ? 'wide' : ((im.w/im.h) >= 1.25 ? 'half' : '')}" aria-label="Agrandir le visuel ${i+1}"><img src="${im.src}" alt="${p.titre} — ${p.secteur}, visuel ${i+1} sur ${p.imgs.length}. Direction artistique Julien Saldo." loading="lazy" decoding="async"></button>`).join('');
   currentProject = p;
-  requestAnimationFrame(()=>masonry(ov.querySelector('.shots')));
+  const shots = ov.querySelector('.shots');
+  requestAnimationFrame(()=>{ masonry(shots); requestAnimationFrame(()=>masonry(shots)); });
   ov.scrollTop = 0;
 
   gsap.set(ov,{visibility:'visible',autoAlpha:1});
