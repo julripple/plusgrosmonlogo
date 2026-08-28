@@ -21,7 +21,7 @@ window.SITE = [
     "case": "campagne",
     "titre": "Lancement CanalPlay / Propositions",
     "secteur": "Plateforme de streaming",
-    "ligne": "Une campagne pensée pour être comprise avant même d'être lue.",
+    "ligne": "Lancement de CanalPlay, plateforme de streaming vidéo en France, avant l'arrivée des gros acteurs internationaux. Enjeu : faire connaître le concept de la SVOD et convaincre un public qui ne connaît pas encore l'usage.",
     "statut": "Proposition",
     "imgs": [
       {
@@ -270,7 +270,7 @@ window.SITE = [
     "case": "identite",
     "titre": "Identité Le Yoga Trail",
     "secteur": "Pratique sportive hybride",
-    "ligne": "Yoga d'un côté, trail de l'autre : il fallait éviter de simplement coller les deux univers. Les courbes de niveau m'ont donné le terrain commun, puis le reste de l'identité s'est construit autour.",
+    "ligne": "Le Yoga Trail associe deux pratiques rarement liées, yoga et trail running, sur un marché sport où chaque discipline a ses codes propres. Enjeu : construire une identité crédible sur les deux univers à la fois, sans donner l'impression d'un mélange artificiel.",
     "imgs": [
       {
         "src": "yogatrail-01",
@@ -409,10 +409,10 @@ window.SITE = [
   },
   {
     "id": "mobilite",
-    "case": "ia",
-    "titre": "Campagne mobilité — portraits générés",
+    "case": "campagne",
+    "titre": "Campagne mobilité — se laisser porter",
     "secteur": "Réseau de transport public",
-    "ligne": "Trois personnages, aucun shooting. J'ai travaillé les profils, les cadrages, les attitudes et la lumière en génération d'images, puis l'ensemble comme une série photo classique.",
+    "ligne": "Sibra est un réseau de bus qui doit convaincre au-delà de sa clientèle captive, sur un marché où la voiture reste le réflexe par défaut. Enjeu : montrer que le trajet en bus libère du temps utile, pour penser, lire ou travailler, plutôt que de le vendre comme une simple contrainte de déplacement.",
     "statut": "Proposition",
     "imgs": [
       {
@@ -437,7 +437,7 @@ window.SITE = [
     "case": "ia",
     "titre": "Illustration et packaging — Logo Tweedle",
     "secteur": "Biscuiterie de montagne",
-    "ligne": "Des animaux des montagnes pour servir le local",
+    "ligne": "Tweedle est un biscuitier artisanal en Haute-Savoie, sur un marché où le \"made in local\" est revendiqué par de nombreuses marques. Enjeu : ancrer la marque dans son terroir alpin de façon identifiable, au-delà du simple argument \"fabriqué ici\".",
     "imgs": [
       {
         "src": "biscuiterie-01",
@@ -471,7 +471,7 @@ window.SITE = [
     "case": "ia",
     "titre": "Moka — magazine, affichage et vœux",
     "secteur": "Moka",
-    "ligne": "Magazine, campagne, vœux : trois terrains assez différents. L'image générée m'a surtout permis d'aller chercher des situations compliquées, coûteuses ou carrément impossibles à produire autrement.",
+    "ligne": "Moka est un média qui croise sport et culture, un positionnement sans concurrent direct sur ce créneau. Enjeu : décliner cette identité sur trois formats différents (couverture magazine, affiche, vœux) sans perdre la cohérence de marque.",
     "imgs": [
       {
         "src": "moka-01",
