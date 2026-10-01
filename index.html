@@ -201,6 +201,18 @@ header .k{color:var(--accent);font-variation-settings:"wght" 800}
   backdrop-filter:blur(6px)}
 .ov .sec .tag{margin-left:10px;border-color:var(--accent);color:var(--accent)}
 
+
+/* digital lab : aperçu vivant des expériences interactives */
+.card.demo-card{aspect-ratio:16/9;min-height:220px;background:#111}
+.card.demo-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;background:#111}
+.card.demo-card .demo-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card.demo-card .meta{background:linear-gradient(to top,rgba(10,10,10,.96),rgba(10,10,10,.08) 70%,transparent)}
+.demo-shell{grid-column:1/-1;position:relative;width:100%;aspect-ratio:16/9;background:#111;overflow:hidden}
+.demo-shell iframe{width:100%;height:100%;border:0;display:block;background:#111}
+.demo-open{position:absolute;right:18px;bottom:18px;z-index:4;background:var(--accent);color:#fff;
+  padding:12px 16px;text-transform:uppercase;letter-spacing:.11em;font-size:10px;font-variation-settings:"wght" 700}
+@media(max-width:700px){.demo-shell{aspect-ratio:4/3}.card.demo-card{min-height:180px}}
+
 /* spécialités */
 .skills{border-top:1px solid var(--line);margin-top:clamp(64px,14vh,160px)}
 .sk{border-bottom:1px solid var(--line);padding:clamp(22px,4vh,44px) 0;display:grid;
@@ -441,7 +453,7 @@ const gFrom   = (x,v)=>{ const a=T(x); return a ? gsap.from(a,v)   : gsap.timeli
 const gTo     = (x,v)=>{ const a=T(x); return a ? gsap.to(a,v)     : gsap.timeline(); };
 const gFromTo = (x,f,v)=>{ const a=T(x); return a ? gsap.fromTo(a,f,v) : gsap.timeline(); };
 
-const LABELS = {campagne:'Campagne', identite:'Identité', ia:'IA', edition:'Édition'};
+const LABELS = {campagne:'Campagne', identite:'Identité', ia:'IA', edition:'Édition', digital:'Digital'};
 const IMG = window.IMG || {};
 const px = k => IMG[k] || k;          /* clé → visuel encodé */
 const DATA = (window.SITE || []).map(p => ({...p, imgs: p.imgs.map(i => ({...i, src: px(i.src)}))}));
@@ -575,12 +587,14 @@ addEventListener('resize', ()=>{
 function renderGrid(){
   const list = current==='tout' ? DATA : DATA.filter(p=>p.case===current);
   grid.innerHTML = list.map((p,i)=>`
-    <button class="card" data-id="${p.id}" data-w="${p.imgs[0].w}" data-h="${p.imgs[0].h}">
-      <img src="${p.imgs[0].src}" alt="${p.titre} — ${p.secteur}. Direction artistique Julien Saldo." loading="lazy" decoding="async">
+    <button class="card ${p.demo?'demo-card':''}" data-id="${p.id}" data-w="${p.imgs[0].w}" data-h="${p.imgs[0].h}">
+      ${p.demo
+        ? `<img class="demo-poster" src="${p.imgs[0].src}" alt="" loading="lazy"><iframe src="${p.demo}?preview=1" title="Aperçu animé — ${p.titre}" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>`
+        : `<img src="${p.imgs[0].src}" alt="${p.titre} — ${p.secteur}. Direction artistique Julien Saldo." loading="lazy" decoding="async">`}
       <span class="n">${String(i+1).padStart(2,'0')}</span>
       ${p.statut ? `<span class="tag">${p.statut}</span>` : ''}
       <span class="more" aria-hidden="true"><i></i><i></i></span>
-      <span class="meta"><span class="s">${LABELS[p.case]||p.case} — ${p.imgs.length} visuel${p.imgs.length>1?'s':''}</span><span class="t">${p.titre}</span></span>
+      <span class="meta"><span class="s">${LABELS[p.case]||p.case}${p.demo?' — expérience interactive':` — ${p.imgs.length} visuel${p.imgs.length>1?'s':''}`}</span><span class="t">${p.titre}</span></span>
     </button>`).join('');
   masonry(grid);
   const ht = document.getElementById('hintTxt');
@@ -665,8 +679,10 @@ function open(id, card){
     a.innerHTML = `Voir le site en ligne <span class="host">${host}</span> <span class="ar">↗</span>`;
     head.appendChild(a);
   }
-  ov.querySelector('.shots').innerHTML = p.imgs.map((im,i)=>
-    `<button data-i="${i}" data-w="${im.w}" data-h="${im.h}" class="${(im.w/im.h) >= 1.7 ? 'wide' : ((im.w/im.h) >= 1.25 ? 'half' : '')}" aria-label="Agrandir le visuel ${i+1}"><img src="${im.src}" alt="${p.titre} — ${p.secteur}, visuel ${i+1} sur ${p.imgs.length}. Direction artistique Julien Saldo." loading="lazy" decoding="async"></button>`).join('');
+  ov.querySelector('.shots').innerHTML = p.demo
+    ? `<div class="demo-shell"><iframe src="${p.demo}" title="${p.titre} — démo interactive" loading="eager"></iframe><a class="demo-open" href="${p.demo}" target="_blank" rel="noopener noreferrer">Plein écran ↗</a></div>`
+    : p.imgs.map((im,i)=>
+      `<button data-i="${i}" data-w="${im.w}" data-h="${im.h}" class="${(im.w/im.h) >= 1.7 ? 'wide' : ((im.w/im.h) >= 1.25 ? 'half' : '')}" aria-label="Agrandir le visuel ${i+1}"><img src="${im.src}" alt="${p.titre} — ${p.secteur}, visuel ${i+1} sur ${p.imgs.length}. Direction artistique Julien Saldo." loading="lazy" decoding="async"></button>`).join('');
   currentProject = p;
   const shots = ov.querySelector('.shots');
   requestAnimationFrame(()=>{ masonry(shots); requestAnimationFrame(()=>masonry(shots)); });
