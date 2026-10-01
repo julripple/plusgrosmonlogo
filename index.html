@@ -712,6 +712,11 @@ function close(){
 grid.addEventListener('click', e=>{
   const c = e.target.closest('.card'); if(!c) return;
   const p = DATA.find(x=>x.id===c.dataset.id);
+  if(p && p.demo){
+    gsap.to(c,{scale:.965,duration:.14,ease:'power2.out',yoyo:true,repeat:1});
+    sweep(p.titre, ()=>{ window.location.href = p.demo; });
+    return;
+  }
   gsap.to(c,{scale:.965,duration:.14,ease:'power2.out',yoyo:true,repeat:1});
   sweep(p ? p.titre : '', ()=>open(c.dataset.id, c));
 });
