@@ -491,6 +491,22 @@ window.SITE = [
     ]
   },
   {
+    "id": "altitude86",
+    "case": "digital",
+    "titre": "ALTITUDE 86 — direction artistique interactive",
+    "secteur": "Prototype / expérimentation",
+    "ligne": "Une même interface, trois directions artistiques. Un prototype conçu pour tester en direct la composition, la typographie, le mouvement et les interactions.",
+    "statut": "Prototype",
+    "demo": "altitude86-demo.html",
+    "imgs": [
+      {
+        "src": "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_7as5wz6v1g8vds7hp9ehhd3d42/883e8b68e67f718c5fdd9cacef7c74cc_1790841150316.png",
+        "w": 1600,
+        "h": 900
+      }
+    ]
+  },
+  {
     "id": "ripple",
     "case": "digital",
     "titre": "Ripple — plateforme de sport solidaire",
