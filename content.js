@@ -17,6 +17,38 @@
 
 window.SITE = [
   {
+    "id": "archive27",
+    "case": "digital",
+    "titre": "ARCHIVE 27 — interface éditoriale expérimentale",
+    "secteur": "Prototype / expérimentation",
+    "ligne": "Une interface pensée comme une composition éditoriale vivante : typographie, image, grille et mouvement se recomposent en temps réel.",
+    "statut": "Prototype",
+    "demo": "archive27-demo.html",
+    "imgs": [
+      {
+        "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900'%3E%3Crect width='1600' height='900' fill='%23eee7d7'/%3E%3Ctext x='70' y='180' font-family='serif' font-size='155' fill='%232b2925'%3EArchive%3C/text%3E%3Ctext x='1040' y='650' font-family='serif' font-style='italic' font-size='300' fill='none' stroke='%232b2925' stroke-width='3'%3E27%3C/text%3E%3Ctext x='70' y='820' font-family='monospace' font-size='28' fill='%237f1d1d'%3EINSTITUTE FOR VISUAL RESEARCH%3C/text%3E%3C/svg%3E",
+        "w": 1600,
+        "h": 900
+      }
+    ]
+  },
+  {
+    "id": "altitude86",
+    "case": "digital",
+    "titre": "ALTITUDE 86 — direction artistique interactive",
+    "secteur": "Prototype / expérimentation",
+    "ligne": "Une même interface, trois directions artistiques. Un prototype conçu pour tester en direct la composition, la typographie, le mouvement et les interactions.",
+    "statut": "Prototype",
+    "demo": "altitude86-demo.html",
+    "imgs": [
+      {
+        "src": "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_7as5wz6v1g8vds7hp9ehhd3d42/883e8b68e67f718c5fdd9cacef7c74cc_1790841150316.png",
+        "w": 1600,
+        "h": 900
+      }
+    ]
+  },
+  {
     "id": "vod",
     "case": "campagne",
     "titre": "Lancement CanalPlay / Propositions",
@@ -487,38 +519,6 @@ window.SITE = [
         "src": "moka-03",
         "w": 1354,
         "h": 1354
-      }
-    ]
-  },
-  {
-    "id": "archive27",
-    "case": "digital",
-    "titre": "ARCHIVE 27 — interface éditoriale expérimentale",
-    "secteur": "Prototype / expérimentation",
-    "ligne": "Une interface pensée comme une composition éditoriale vivante : typographie, image, grille et mouvement se recomposent en temps réel.",
-    "statut": "Prototype",
-    "demo": "archive27-demo.html",
-    "imgs": [
-      {
-        "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900'%3E%3Crect width='1600' height='900' fill='%23eee7d7'/%3E%3Ctext x='70' y='180' font-family='serif' font-size='155' fill='%232b2925'%3EArchive%3C/text%3E%3Ctext x='1040' y='650' font-family='serif' font-style='italic' font-size='300' fill='none' stroke='%232b2925' stroke-width='3'%3E27%3C/text%3E%3Ctext x='70' y='820' font-family='monospace' font-size='28' fill='%237f1d1d'%3EINSTITUTE FOR VISUAL RESEARCH%3C/text%3E%3C/svg%3E",
-        "w": 1600,
-        "h": 900
-      }
-    ]
-  },
-  {
-    "id": "altitude86",
-    "case": "digital",
-    "titre": "ALTITUDE 86 — direction artistique interactive",
-    "secteur": "Prototype / expérimentation",
-    "ligne": "Une même interface, trois directions artistiques. Un prototype conçu pour tester en direct la composition, la typographie, le mouvement et les interactions.",
-    "statut": "Prototype",
-    "demo": "altitude86-demo.html",
-    "imgs": [
-      {
-        "src": "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_7as5wz6v1g8vds7hp9ehhd3d42/883e8b68e67f718c5fdd9cacef7c74cc_1790841150316.png",
-        "w": 1600,
-        "h": 900
       }
     ]
   },
