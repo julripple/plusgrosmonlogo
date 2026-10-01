@@ -719,7 +719,7 @@ grid.addEventListener('click', e=>{
   }
   if(p && p.direct && p.url){
     gsap.to(c,{scale:.965,duration:.14,ease:'power2.out',yoyo:true,repeat:1});
-    sweep(p.titre, ()=>{ window.open(p.url,'_blank','noopener,noreferrer'); });
+    window.location.href = p.url;
     return;
   }
   gsap.to(c,{scale:.965,duration:.14,ease:'power2.out',yoyo:true,repeat:1});
