@@ -17,6 +17,23 @@
 
 window.SITE = [
   {
+    "id": "gml-game",
+    "case": "digital",
+    "titre": "+GROS MON LOGO! — The Neverending Brief",
+    "secteur": "Jeu / expérience interactive",
+    "ligne": "Un mini jeu d’arcade 8-bit sur le brief infini, entre satire du monde créatif, direction artistique et développement.",
+    "statut": "Jeu en ligne",
+    "url": "https://exact-snap-vision-75.lovable.app/",
+    "direct": true,
+    "imgs": [
+      {
+        "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900'%3E%3Crect width='1600' height='900' fill='%230d0c12'/%3E%3Crect x='70' y='75' width='1460' height='750' fill='none' stroke='%23e90067' stroke-width='10'/%3E%3Ctext x='800' y='265' text-anchor='middle' font-family='monospace' font-weight='900' font-size='145' fill='%23f7f0df' stroke='%23e90067' stroke-width='8' paint-order='stroke'%3E%2BGROS MON LOGO!%3C/text%3E%3Crect x='455' y='325' width='690' height='86' fill='%23ffb400'/%3E%3Ctext x='800' y='384' text-anchor='middle' font-family='monospace' font-weight='700' font-size='44' fill='%230d0c12'%3ETHE NEVERENDING BRIEF%3C/text%3E%3Ctext x='800' y='555' text-anchor='middle' font-family='monospace' font-weight='700' font-size='54' fill='%23ffffff'%3ESURVIVEZ AUX RETOURS CLIENT.%3C/text%3E%3Ctext x='800' y='645' text-anchor='middle' font-family='monospace' font-weight='700' font-size='34' fill='%2334cfff'%3EARCADE 8-BIT / DIRECTION ARTISTIQUE / INTERACTIF%3C/text%3E%3Crect x='585' y='705' width='430' height='74' fill='%23e90067'/%3E%3Ctext x='800' y='755' text-anchor='middle' font-family='monospace' font-weight='900' font-size='38' fill='%23ffffff'%3EJOUER %E2%86%97%3C/text%3E%3C/svg%3E",
+        "w": 1600,
+        "h": 900
+      }
+    ]
+  },
+  {
     "id": "archive27",
     "case": "digital",
     "titre": "ARCHIVE 27 — interface éditoriale expérimentale",
