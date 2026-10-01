@@ -269,9 +269,24 @@
     transition: width .45s var(--ease-swift), height .45s var(--ease-swift);
   }
   @media (hover: none) { body { cursor: auto; } .cursor { display: none; } .mode-btn, .cta { cursor: pointer; } }
+
+  .portfolio-back{
+    position:fixed;top:18px;left:18px;z-index:9999;
+    display:inline-flex;align-items:center;gap:9px;
+    padding:9px 12px;
+    font-family:'Archivo',sans-serif;font-size:10px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+    color:var(--fg);background:color-mix(in oklab,var(--bg) 82%,transparent);
+    border:1px solid var(--rule);
+    backdrop-filter:blur(8px);
+    transition:transform .25s var(--ease-swift),background-color .25s var(--ease-swift),color .25s var(--ease-swift);
+  }
+  .portfolio-back:hover{transform:translateX(-3px);background:var(--accent-signal);color:var(--ink)}
+  @media(max-width:640px){.portfolio-back{top:12px;left:12px;padding:8px 10px}}
 </style>
 </head>
 <body data-mode="minimal">
+<a class="portfolio-back" href="./" aria-label="Retour au portfolio">← +GROS MON LOGO!</a>
   <div class="stage anim" id="stage">
     <header>
       <div class="brand-wrap">
