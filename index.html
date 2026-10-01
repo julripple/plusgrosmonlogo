@@ -435,7 +435,7 @@ setTimeout(function(){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js" onerror="window.__noLenis=1"></script>
 <script src="images.js?v=20261001-archive27"></script>
-<script src="content.js?v=20261001-archive27"></script>
+<script src="content.js?v=20261001-gmlgame"></script>
 <script>
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 gsap.registerPlugin(ScrollTrigger);
@@ -715,6 +715,11 @@ grid.addEventListener('click', e=>{
   if(p && p.demo){
     gsap.to(c,{scale:.965,duration:.14,ease:'power2.out',yoyo:true,repeat:1});
     sweep(p.titre, ()=>{ window.location.href = p.demo; });
+    return;
+  }
+  if(p && p.direct && p.url){
+    gsap.to(c,{scale:.965,duration:.14,ease:'power2.out',yoyo:true,repeat:1});
+    sweep(p.titre, ()=>{ window.open(p.url,'_blank','noopener,noreferrer'); });
     return;
   }
   gsap.to(c,{scale:.965,duration:.14,ease:'power2.out',yoyo:true,repeat:1});
