@@ -23,7 +23,7 @@ window.SITE = [
     "secteur": "Jeu / expérience interactive",
     "ligne": "Un mini jeu d’arcade 8-bit sur le brief infini, entre satire du monde créatif, direction artistique et développement.",
     "statut": "Jeu en ligne",
-    "url": "https://exact-snap-vision-75.lovable.app/",
+    "url": "https://plusgrosmonlogo.com/game/",
     "direct": true,
     "imgs": [
       {
