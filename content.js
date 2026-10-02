@@ -23,7 +23,7 @@ window.SITE = [
     "secteur": "Jeu / expérience interactive",
     "ligne": "Un mini jeu d’arcade 8-bit sur le brief infini, entre satire du monde créatif, direction artistique et développement.",
     "statut": "Jeu en ligne",
-    "url": "https://plusgrosmonlogo.com/game/",
+    "url": "https://game-plusgrosmonlogo.lovable.app/",
     "direct": true,
     "imgs": [
       {
