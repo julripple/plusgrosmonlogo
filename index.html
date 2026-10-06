@@ -61,6 +61,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="refonte-home.css?v=1">
 <style>
 :root{
   --bg:#0A0A0A; --surface:#141416; --ink:#F2F2EE; --mut:#6E6E68;
@@ -354,6 +355,14 @@ setTimeout(function(){
       <em class="rot"><span class="slot">Plus juste</span></em>
     </h1>
     <p class="lede">Plus de vingt ans à trouver des idées et à leur donner la bonne forme. Identité, campagne, IA, édition, digital&nbsp;: <b>je vais de l'idée jusqu'à sa diffusion.</b></p>
+  </section>
+
+  <section class="featured" id="selected-work" aria-label="Projets sélectionnés">
+    <div class="featured-head">
+      <span class="eyebrow">Selected work</span>
+      <span class="featured-count">07 projets</span>
+    </div>
+    <div class="featured-stage" id="featuredStage"></div>
   </section>
 
   <section class="stats">
@@ -973,5 +982,6 @@ gsap.utils.toArray('.sk').forEach(el=>{
 gFrom('.joke',{opacity:0,y:24,duration:.6,ease:'expo.out',
   scrollTrigger:{trigger:'.joke',start:'top 88%'}});
 </script>
+<script src="refonte-home.js?v=1"></script>
 </body>
 </html>
