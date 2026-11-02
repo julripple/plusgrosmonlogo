@@ -569,7 +569,86 @@ window.SITE = [
       }
     ],
     "url": "https://www.lepetitchaletdesdents.fr"
-  }
+  },
+{
+  "id": "edition-corporate",
+  "case": "edition",
+  "titre": "Édition corporate",
+  "secteur": "Rapports et documents institutionnels",
+  "ligne": "Une sélection de rapports et de documents corporate : gabarits, mise en page et cahier corporate. Mon intervention est précisée pour chaque document. Cliquez sur une couverture pour consulter le PDF.",
+  "imgs": [
+    {
+      "src": "assets/edition/edition-corporate.webp",
+      "w": 1440,
+      "h": 1080
+    }
+  ],
+  "documents": [
+    {
+      "title": "Eiffage",
+      "subtitle": "DEU 2023",
+      "role": "Gabarits et mise en page",
+      "cover": "assets/edition/eiffage.webp",
+      "pdf": "assets/edition/pdf/eiffage.pdf",
+      "pages": 36,
+      "size": "6,6 Mo"
+    },
+    {
+      "title": "Covivio",
+      "subtitle": "DEU 2023",
+      "role": "Cahier corporate",
+      "cover": "assets/edition/covivio.webp",
+      "pdf": "assets/edition/pdf/covivio.pdf",
+      "pages": 11,
+      "size": "0,8 Mo"
+    },
+    {
+      "title": "Groupe SEB",
+      "subtitle": "DEU 2023",
+      "role": "Mise en page",
+      "cover": "assets/edition/seb.webp",
+      "pdf": "assets/edition/pdf/seb.pdf",
+      "pages": 32,
+      "size": "1,2 Mo"
+    },
+    {
+      "title": "Sanofi",
+      "subtitle": "DEU 2022",
+      "role": "Gabarits et mise en page",
+      "cover": "assets/edition/sanofi.webp",
+      "pdf": "assets/edition/pdf/sanofi.pdf",
+      "pages": 12,
+      "size": "3,4 Mo"
+    },
+    {
+      "title": "Sodiaal",
+      "subtitle": "Présentation 2023",
+      "role": "Gabarits et mise en page",
+      "cover": "assets/edition/sodiaal.webp",
+      "pdf": "assets/edition/pdf/sodiaal.pdf",
+      "pages": 26,
+      "size": "6,3 Mo"
+    },
+    {
+      "title": "Eramet",
+      "subtitle": "DEU 2022",
+      "role": "Mise en page",
+      "cover": "assets/edition/eramet.webp",
+      "pdf": "assets/edition/pdf/eramet.pdf",
+      "pages": 44,
+      "size": "4,9 Mo"
+    },
+    {
+      "title": "Iliad",
+      "subtitle": "DEU 2022 · Version anglaise",
+      "role": "Mise en page",
+      "cover": "assets/edition/iliad.webp",
+      "pdf": "assets/edition/pdf/iliad.pdf",
+      "pages": 280,
+      "size": "3,5 Mo"
+    }
+  ]
+}
 ];
 
 /* Logos du mur « Ils ont demandé plus gros » */
@@ -643,5 +722,6 @@ window.LOGOS = [
     "src": "logo-logo-geol",
     "w": 420,
     "h": 268
-  }
+  },
+  {"src": "assets/logos/texto.svg", "w": 404, "h": 119, "alt": "Agence TEXTO"}
 ];
