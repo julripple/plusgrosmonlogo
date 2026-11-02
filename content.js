@@ -141,6 +141,24 @@ window.SITE = [
       "pdf": "assets/edition/pdf/iliad.pdf",
       "pages": 280,
       "size": "3,5 Mo"
+    },
+    {
+      "title": "Micropole SA",
+      "subtitle": "DEU 2021",
+      "role": "Mise en page",
+      "cover": "assets/edition/micropole.webp",
+      "pdf": "assets/edition/pdf/micropole.pdf",
+      "pages": 140,
+      "size": "3,7 Mo"
+    },
+    {
+      "title": "Paragon ID",
+      "subtitle": "DPEF 2021-2022",
+      "role": "Mise en page",
+      "cover": "assets/edition/paragon.webp",
+      "pdf": "assets/edition/pdf/paragon.pdf",
+      "pages": 45,
+      "size": "1,5 Mo"
     }
   ]
 },
