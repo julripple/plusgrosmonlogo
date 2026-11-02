@@ -575,7 +575,7 @@ window.SITE = [
   "case": "edition",
   "titre": "Édition corporate",
   "secteur": "Rapports et documents institutionnels",
-  "ligne": "Une sélection de rapports et de documents corporate : gabarits, mise en page et cahier corporate. Mon intervention est précisée pour chaque document. Cliquez sur une couverture pour consulter le PDF.",
+  "ligne": "Quelques exemples de gabarits et de mises en page d’URD, de cahiers corporate et de présentations.",
   "imgs": [
     {
       "src": "assets/edition/edition-corporate.webp",
